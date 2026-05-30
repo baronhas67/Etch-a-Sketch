@@ -1,13 +1,26 @@
 const boxHolder = document.querySelector("#box-holder");
 const button = document.querySelector("#newbtn");
+const rgbBtn = document.querySelector("#toggleColor");
 
-let color = "";
+let color = "blue";
+let rgbMode = false;
 let box = document.createElement("div");
 box.classList.add("boxes");
 
+
+rgbBtn.addEventListener("mousedown", (e) => {
+    
+
+    if (e.button == 0) {
+        rgbMode = true;
+    } else if (e.button == 2) {
+        rgbMode = false;
+    }
+    console.log(`rgbMode is now set to ${rgbMode}`);
+})
+
 function randomColor() {
     let ranNum = Math.floor(Math.random() * 3) + 1;
-    console.log(ranNum);
 
     if (ranNum == 3) {
         color = "red";
@@ -19,7 +32,7 @@ function randomColor() {
 }
 
 function setNewSize() {
-    let newSize = +prompt("Enter new size: ", "");
+    let newSize = +prompt("Enter new size: ", "12");
 
     if (newSize > 100) {
         alert("Enter a value less than 100");
@@ -50,6 +63,8 @@ function makeBox(max) {
 
 
 boxHolder.addEventListener("mouseover", (e) => {
-    randomColor();
+    if (rgbMode == true) {
+        randomColor();
+    }
     e.target.style.backgroundColor = color;
 })
