@@ -3,14 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Etch-a-Sketch-basic</title>
     <link rel="stylesheet" href="styles.css">
     <script src="scripts.js" defer></script>
 </head>
 <body>
-    <button id="newbtn">Set new size</button>
-    <button id="toggleColor">rgb</button>
-    <button id="newColor">Select a new color</button>
-    <div id="box-holder"></div>
+    <div class="btn-n-pContainer">
+    <div class="btn-container">
+        <button id="newbtn">Set new size</button>
+        <button id="toggleColor">rgb</button>
+        <button id="newColor">Select a new color</button>
+    </div>
+    <div class="instruction-div">
+        <h1>How to play</h1>
+        <p>This is a very minimal Etch-a-Sketch. Here is how to play:
+            <ul>
+                <li>Click new size, enter a size. Max is 100</li>
+                <li>The default color is blue, change it with new color button</li>
+                <li>The rgb button makes the brush produce red, gree and blue colors at random</li>
+                <li>The enable rgb left click the rgb button. To disable it right click the same</li>
+                <li>To reset just click new size again</li>
+            </ul>
+            I hope you enjoy it, we would like your feedback.
+        </p>
+    </div>
+    </div>
+    <div class="canvas-container">
+        <div id="box-holder"></div>
+    </div>
 </body>
 </html>
