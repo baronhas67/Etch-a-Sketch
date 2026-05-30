@@ -1,6 +1,7 @@
 const boxHolder = document.querySelector("#box-holder");
 const button = document.querySelector("#newbtn");
 const rgbBtn = document.querySelector("#toggleColor");
+const newColorBtn = document.querySelector("#newColor");
 
 let color = "blue";
 let rgbMode = false;
@@ -15,8 +16,14 @@ rgbBtn.addEventListener("mousedown", (e) => {
         rgbMode = true;
     } else if (e.button == 2) {
         rgbMode = false;
+        color = "blue";
     }
     console.log(`rgbMode is now set to ${rgbMode}`);
+})
+
+newColorBtn.addEventListener("click", () => {
+    rgbMode = false;
+    color = prompt("Enter a new color", "blue");
 })
 
 function randomColor() {
