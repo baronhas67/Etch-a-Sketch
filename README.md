@@ -10,10 +10,11 @@ Some of the *small features*:
 - You can change the color
 - Control the grid size
 - A random color feature (rgb)
+- Custom colors feature
 
 ---
 
-## Some things to remaining to add:
+## Some things remaining to add:
 
 - A current color display
 - Opacity control
