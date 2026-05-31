@@ -1,4 +1,7 @@
 const boxHolder = document.querySelector("#box-holder");
+
+const buttonContainer = document.querySelector(".btn-container");
+
 const button = document.querySelector("#newbtn");
 const rgbBtn = document.querySelector("#rgbMode");
 const newColorBtn = document.querySelector("#newColor");
@@ -15,35 +18,36 @@ let box = document.createElement("div");
 box.classList.add("boxes");
 
 
-rgbBtn.addEventListener("mousedown", (e) => {
-    
+buttonContainer.addEventListener("mousedown", (e) => {
+    let button = e.target.id;
 
-    if (e.button == 0) {
-        rgbMode = true;
-    } else if (e.button == 2) {
-        rgbMode = false;
-        color = "blue";
-    }
+    switch (button) {
+        case "rgbMode":
+            if (e.button == 0) {
+                rgbMode = true;
+        }   else if (e.button == 2) {
+                rgbMode = false;
+                color = "blue";
+        }
     console.log(`rgbMode is now set to ${rgbMode}`);
-})
+        break;
 
-Mode2btn.addEventListener("mousedown", (e) => {
-
-    if (e.button == 0) {
-        rgbMode = false;
-        mode2 = true;
-    } else if (e.button == 2) {
-        mode2 = false;
+        case "Mode2":
+            if (e.button == 0) {
+                rgbMode = false;
+                mode2 = true;
+    }   else if (e.button == 2) {
+                mode2 = false;
     }
     console.log(`more colors mode is now set to ${mode2}`);
-})
+        break;
 
-customeColorBtn.addEventListener("mousedown", (e) => {
-
-    if (e.button == 0) {
+        case "customColorsbtn":
+                if (e.button == 0) {
         rgbMode = false;
         mode2 = false;
         customeColorsMode = true;
+        colorsArray.length = 0;
 
         colorsNumber = +prompt("How many colors do you want to add?", "");
 
@@ -55,12 +59,17 @@ customeColorBtn.addEventListener("mousedown", (e) => {
         customeColorsMode = false;
     }
     console.log(`custom color is now ${customeColorsMode}`);
-})
+        break;
 
-newColorBtn.addEventListener("click", () => {
-    rgbMode = false;
-    mode2 = false;
-    color = prompt("Enter a new color", "blue");
+        case "newColor":
+            rgbMode = false;
+            mode2 = false;
+            customeColorsMode = false;
+            console.log("custom colors is now" + customeColorsMode)
+            color = prompt("Enter a new color", "blue");
+        break;
+    }
+
 })
 
 function randomColor() {
@@ -117,14 +126,13 @@ function makeBox(max) {
 }
 
 
-
 boxHolder.addEventListener("mouseover", (e) => {
     if (rgbMode == true) {
         randomColor();
     } else if (mode2 == true) {
         rgbMode = false;
         randomColor2();
-    } else if (customeColorsMode) {
+    } else if (customeColorsMode == true) {
         rgbMode = false;
         mode2 = false;
         customColors(colorsArray, colorsNumber);
